@@ -1,7 +1,5 @@
 {
   "name": "marketplace-ui",
-  "integrations": {
-    "capacitor": {}
-  },
+  "integrations": {},
   "type": "angular"
 }

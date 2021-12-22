@@ -1,0 +1,131 @@
+<ion-content class="ion-padding">
+
+  <p *ngIf="error"><ion-text color="danger">{{ error }}</ion-text></p>
+
+  <app-text-spinner *ngIf="loading" text="Loading Package"></app-text-spinner>
+
+  <ng-container *ngIf="!loading && pkg">
+    <ion-grid>
+      <ion-row>
+        <ion-button fill="clear" [routerLink]="['']">
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+          All Services
+        </ion-button>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeXs="12" sizeSm="12" sizeMd="9" sizeLg="9" sizeXl="9">
+          <div class="header">
+            <img [src]="pkg.icon" />
+            <div class="header-text">
+              <h1 class="header-title">{{ pkg.manifest.title }}</h1>
+              <p class="header-version">{{ pkg.manifest.version | displayEmver }}</p>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col sizeXl="3" sizeLg="3" sizeMd="3" sizeSm="12" sizeXs="12" class="ion-align-self-center">
+          <ion-button strong expand="block" href="https://store.start9.com/collections/embassy" target="_blank" noreferrer>
+            Get
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item-group>
+      <!-- release notes -->
+      <ion-item-divider>
+        New in {{ pkg.manifest.version | displayEmver }}
+      </ion-item-divider>
+      <ion-item lines="none">
+        <ion-label class="ion-text-wrap" >
+          <div id='release-notes' [innerHTML]="pkg.manifest['release-notes'] | markdown"></div>
+        </ion-label>
+      </ion-item>
+      <!-- description -->
+      <ion-item-divider>Description</ion-item-divider>
+      <ion-item lines="none">
+        <ion-label class="ion-text-wrap">
+          <div id="release-notes" class="release-notes">{{ pkg.manifest.description.long }}</div>
+        </ion-label>
+      </ion-item>
+      <!-- dependencies -->
+      <ng-container *ngIf="!(pkg.manifest.dependencies | empty)">
+        <ion-item-divider>Dependencies</ion-item-divider>
+          <ion-grid>
+            <ion-row>
+              <ion-col *ngFor="let dep of pkg.manifest.dependencies | keyvalue" sizeSm="12" sizeMd="6">
+                <ion-item *ngIf="!dep.value.optional" [routerLink]="['/', dep.key]">
+                  <ion-thumbnail slot="start">
+                    <img [src]="pkg['dependency-metadata'][dep.key].icon" />
+                  </ion-thumbnail>
+                  <ion-label class="ion-text-wrap">
+                    <h2>
+                      {{ pkg['dependency-metadata'][dep.key].title }}
+                      <span *ngIf="dep.value.recommended"> (recommended)</span>
+                    </h2>
+                    <p style="font-size: small">{{ dep.value.version | displayEmver }}</p>
+                    <p>{{ dep.value.description }}</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ng-container>
+    </ion-item-group>
+
+    <ion-item-divider>Additional Info</ion-item-divider>
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeSm="12" sizeMd="6">
+          <ion-item-group>
+            <ion-item button detail="false" (click)="presentAlertVersions()">
+              <ion-label>
+                <h2>Other Versions</h2>
+                <p>Click to view other versions</p>
+              </ion-label>
+              <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+            </ion-item>
+            <ion-item button detail="false" (click)="presentModalMd('license')">
+              <ion-label>
+                <h2>License</h2>
+                <p>{{ pkg.manifest.license }}</p>
+              </ion-label>
+              <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+            </ion-item>
+            <ion-item button detail="false" (click)="presentModalMd('instructions')">
+              <ion-label>
+                <h2>Instructions</h2>
+                <p>Click to view instructions</p>
+              </ion-label>
+              <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+            </ion-item>
+          </ion-item-group>
+        </ion-col>
+        <ion-col sizeSm="12" sizeMd="6">
+          <ion-item-group>
+            <ion-item [href]="pkg.manifest['upstream-repo']" target="_blank" noreferrer detail="false">
+              <ion-label>
+                <h2>Source Repository</h2>
+                <p>{{ pkg.manifest['upstream-repo'] }}</p>
+              </ion-label>
+              <ion-icon slot="end" name="open-outline"></ion-icon>
+            </ion-item>
+            <ion-item [href]="pkg.manifest['wrapper-repo']" target="_blank" noreferrer detail="false">
+              <ion-label>
+                <h2>Wrapper Repository</h2>
+                <p>{{ pkg.manifest['wrapper-repo'] }}</p>
+              </ion-label>
+              <ion-icon slot="end" name="open-outline"></ion-icon>
+            </ion-item>
+            <ion-item [href]="pkg.manifest['support-site']" target="_blank" noreferrer detail="false">
+              <ion-label>
+                <h2>Support Site</h2>
+                <p>{{ pkg.manifest['support-site'] }}</p>
+              </ion-label>
+              <ion-icon slot="end" name="open-outline"></ion-icon>
+            </ion-item>
+          </ion-item-group>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+</ion-content>

@@ -24,3 +24,117 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-item {
+  border-radius: 4px;
+}
+
+ion-item-divider {
+  text-transform: uppercase;
+  --padding-top: 24px;
+  font-weight: 600;
+  --color: var(--ion-color-dark);
+  font-size: medium;
+  border-bottom: none;
+}
+
+ion-toolbar {
+  --min-height: 72px;
+  --ion-background-color: var(--ion-color-light); 
+}
+
+ion-infinite-scroll ion-infinite-scroll-content {
+  --color: var(--ion-color-warning) !important;
+}
+
+ion-alert {
+  .alert-input-wrapper {
+    background: var(--ion-color-dark);
+    .alert-input.sc-ion-alert-md {
+      color: var(--ion-color-light);
+      padding-left: 8px;
+      border-bottom: none;
+    }
+  }
+  .alert-button {
+    color: var(--ion-color-dark) !important;
+  }
+}
+
+ion-button {
+  --color: var(--ion-color-dark) !important;
+}
+
+ion-card-title {
+  font-family: 'Montserrat';
+}
+
+ion-title {
+  font-family: 'Montserrat';
+}
+
+ion-note {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.input-label {
+  text-align: left;
+  font-size: small;
+  font-weight: bold;
+}
+
+.header-icon {
+  padding-left: 12px;
+  width: calc(8vw + 120px);
+  cursor: pointer;
+}
+
+.divider {
+  background: linear-gradient(90deg,var(--ion-color-light) 0,var(--ion-color-dark) 50%,var(--ion-color-light) 100%);
+  height: 1px;
+}
+
+ion-modal::part(content) {
+  position: absolute;
+  height: 90% !important;
+  top: 5%;
+  width: 90% !important;
+  left: 5%;
+  display: block;
+
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,.03);
+  box-shadow: 0 0 70px 70px black;
+}
+
+@media (min-width:1000px) {
+  ion-modal::part(content) {
+    position: absolute;
+    height: 80% !important;
+    top: 10%;
+    width: 50% !important;
+    left: 25%;
+  }
+}
+
+.alertlike-modal {
+  &::part(content) {
+    max-height: 380px !important;
+    top: 25% !important;
+    width: 90% !important;
+    left: 5% !important;
+    --box-shadow: none !important;
+  }
+}
+
+@media (min-width:1000px) {
+  .alertlike-modal {
+    &::part(content) {
+      width: 60% !important;
+      left: 20% !important;
+    }
+  }
+}
