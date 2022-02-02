@@ -6,6 +6,7 @@ import { displayEmver } from 'src/app/pipes/emver.pipe'
 import { MarketplaceService } from 'src/app/services/marketplace.service'
 import { MarkdownPage } from 'src/app/modals/markdown/markdown.page'
 import { Pkg } from 'src/app/services/api/api.types'
+import config from '../../../../config.json'
 
 @Component({
   selector: 'show',
@@ -18,6 +19,7 @@ export class ShowPage {
   loading = true
   pkgId: string
   pkg: Pkg
+  registryUrl = config.url
 
   constructor (
     private readonly route: ActivatedRoute,

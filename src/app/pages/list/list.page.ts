@@ -3,6 +3,7 @@ import { Pkg } from 'src/app/services/api/api.types'
 import { MarketplaceService } from 'src/app/services/marketplace.service'
 import { IonContent } from '@ionic/angular'
 import Fuse from 'fuse.js/dist/fuse.min.js'
+import config from '../../../../config.json'
 
 const defaultOps = {
   isCaseSensitive: false,
@@ -38,6 +39,7 @@ export class ListPage {
   category = 'featured'
   query: string
   loading = true
+  registryUrl = config.url
 
   constructor (
     private readonly marketplaceService: MarketplaceService,
