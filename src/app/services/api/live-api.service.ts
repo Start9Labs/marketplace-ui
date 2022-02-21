@@ -21,7 +21,7 @@ export class LiveApiService implements ApiService {
   async getData (params: Types.GetDataReq): Promise<Types.GetDataRes> {
     return this.http.request<Types.GetDataRes>({
       method: Method.GET,
-      relativeUrl: '/package/data',
+      relativeUrl: '/package/v0/info',
       params,
     })
   }
@@ -29,7 +29,7 @@ export class LiveApiService implements ApiService {
   async getPkgs (params: Types.GetPackagesReq): Promise<Types.GetPackagesRes> {
     return this.http.request<Types.GetPackagesRes>({
       method: Method.GET,
-      relativeUrl: '/package/index',
+      relativeUrl: '/package/v0/index',
       params: {
         ...params,
         ids: JSON.stringify(params.ids),
