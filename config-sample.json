@@ -1,6 +1,4 @@
 {
-  "marketplace": {
-    "useMocks": true,
-    "url": ""
-  }
+  "useMocks": true,
+  "url": ""
 }
