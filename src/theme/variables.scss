@@ -3,7 +3,19 @@
 
 /** Ionic CSS Variables **/
 :root {
-  --ion-color-primary: #0075e1;
+  --ion-font-family: 'Montserrat';
+
+  --ion-item-background: #2b2b2b;
+  --ion-toolbar-background: #2b2b2b;
+  --ion-card-background: #2b2b2b;
+
+  --ion-background-color: #282828;
+  --ion-background-color-rgb: 30,30,30;
+  --ion-text-color: var(--ion-color-dark);
+  --ion-text-color-rgb: var(--ion-color-dark-rgb);
+
+  // colors
+  --ion-color-primary: #428cff;
   --ion-color-primary-rgb: 66,140,255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255,255,255;
@@ -59,28 +71,12 @@
   --ion-color-medium-shade: #86888f;
   --ion-color-medium-tint: #a2a4ab;
 
-  // --ion-color-light: #181818;
-  // --ion-color-light-rgb: 24,24,24;
-  --ion-color-light: #222428;
-  --ion-color-light-rgb: 34,36,40;
+  --ion-color-light: #181818;
+  --ion-color-light-rgb: 24,24,24;
   --ion-color-light-contrast: #ffffff;
   --ion-color-light-contrast-rgb: 0,0,0;
   --ion-color-light-shade: #000000;
   --ion-color-light-tint: #000000;
-
-  --ion-color-medium: #181818;
-  --ion-color-medium-rgb: 24,24,24;
-  --ion-color-medium-contrast: #ffffff;
-  --ion-color-medium-contrast-rgb: 0,0,0;
-  --ion-color-medium-shade: #000000;
-  --ion-color-medium-tint: #000000;
-
-  --ion-color-dark: #e0e0e0;
-  --ion-color-dark-rgb: 224,224,224;
-  --ion-color-dark-contrast: #000000;
-  --ion-color-dark-contrast-rgb: 0,0,0;
-  --ion-color-dark-shade: #bfbfbf;
-  --ion-color-dark-tint: #d8d8d8;
 
   --ion-color-step-50: #1e1e1e;
   --ion-color-step-100: #2a2a2a;
@@ -107,19 +103,5 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: normal;
-  src: url('/assets/fonts/Montserrat/Montserrat-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: bold;
-  src: url('/assets/fonts/Montserrat/Montserrat-Bold.ttf');
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: thin;
-  src: url('/assets/fonts/Montserrat/Montserrat-Light.ttf');
+  src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf');
 }
