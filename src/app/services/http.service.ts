@@ -28,6 +28,7 @@ export class HttpService {
       observe: 'events',
       reportProgress: false,
       withCredentials: false,
+      params: params,
       ...rest,
     })
     .toPromise()
